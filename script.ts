@@ -1,4 +1,4 @@
-const total: number = 0
+const total: number = 20
 
 function somar(a: number, b: number){
     return a + b
