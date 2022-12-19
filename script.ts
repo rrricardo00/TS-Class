@@ -78,45 +78,88 @@
 //     }
 // }
 
-type StringOrNUmber = string | number
+// type StringOrNUmber = string | number
 
-const valor: StringOrNUmber = '200'
+// const valor: StringOrNUmber = '200'
 
-type Produto = {
-    nome: string;
-    preco: number;
-    teclado: boolean;
+// type Produto = {
+//     nome: string;
+//     preco: number;
+//     teclado: boolean;
+// }
+
+// interface InterfaceProduto {
+//     nome: string;
+//     preco: number;
+//     teclado: boolean;
+// }
+
+// function preencherDados(dados: InterfaceProduto) {
+//     document.body.innerHTML += `
+//     <div>
+//       <h2>${dados.nome}</h2>
+//       <p>R$ ${dados.preco}</p>
+//       <p>Inclui teclado: ${dados.teclado ? 'sim' : 'não'}</p>
+//     </div>
+//     `;
+// }
+
+// preencherDados({ nome: "Tablet", preco: 2000, teclado: true })
+// preencherDados({ nome: "PC", preco: 8000, teclado: true })
+
+// type Categorias = 'design' | 'codigo' | 'descod';
+
+// function pintarCategoria(categoria: Categorias) {
+//   if (categoria === 'design') {
+//     console.log('Pintar vermelho');
+//   } else if (categoria === 'codigo') {
+//     console.log('Pintar verde');
+//   } else if (categoria === 'descod') {
+//     console.log('Pintar roxo');
+//   }
+// }
+
+// pintarCategoria('codigo');
+
+
+
+interface Empresa {
+  nome: string;
+  fundacao: number;
+  pais: string;
 }
 
-interface InterfaceProduto {
-    nome: string;
-    preco: number;
-    teclado: boolean;
+interface API {
+  nome: string;
+  preco: number;
+  descricao: string;
+  garantia: string;
+  seguroAcidentes: boolean;
+  empresaFabricante: Empresa;
+  empresaMontadora: Empresa;
 }
 
-function preencherDados(dados: InterfaceProduto) {
-    document.body.innerHTML += `
+async function fetchProduct() {
+  const response = await fetch('https://api.origamid.dev/json/notebook.json');
+  const data = await response.json();
+  showProduct(data);
+}fetchProduct();
+
+function showProduct(data: API) {
+  document.body.innerHTML += `
     <div>
-      <h2>${dados.nome}</h2>
-      <p>R$ ${dados.preco}</p>
-      <p>Inclui teclado: ${dados.teclado ? 'sim' : 'não'}</p>
+      <h2>${data.nome}</h2>
+      <p>R$ ${data.preco}</p>
+      <p>R$ ${data.descricao}</p>
+      <p>R$ ${data.garantia}</p>
+      <p>R$ ${data.seguroAcidentes}</p>
+      <h2>Empresa Fabricante: ${data.empresaFabricante.nome}</h2>
+      <p>R$ ${data.empresaFabricante.fundacao}</p>
+      <p>R$ ${data.empresaFabricante.pais}</p>
+      <h2>Empresa Montadora: ${data.empresaMontadora.nome}</h2>
+      <p>R$ ${data.empresaMontadora.fundacao}</p>
+      <p>R$ ${data.empresaMontadora.pais}</p>
     </div>
-    `;
+  `;
 }
 
-preencherDados({ nome: "Tablet", preco: 2000, teclado: true })
-preencherDados({ nome: "PC", preco: 8000, teclado: true })
-
-type Categorias = 'design' | 'codigo' | 'descod';
-
-function pintarCategoria(categoria: Categorias) {
-  if (categoria === 'design') {
-    console.log('Pintar vermelho');
-  } else if (categoria === 'codigo') {
-    console.log('Pintar verde');
-  } else if (categoria === 'descod') {
-    console.log('Pintar roxo');
-  }
-}
-
-pintarCategoria('codigo');
