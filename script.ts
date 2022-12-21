@@ -123,42 +123,83 @@
 
 
 
+// interface Empresa {
+//   nome: string;
+//   fundacao: number;
+//   pais: string;
+// }
+
+// interface API {
+//   nome: string;
+//   preco: number;
+//   descricao: string;
+//   garantia: string;
+//   seguroAcidentes: boolean;
+//   empresaFabricante: Empresa;
+//   empresaMontadora: Empresa;
+// }
+
+// async function fetchProduct() {
+//   const response = await fetch('https://api.origamid.dev/json/notebook.json');
+//   const data = await response.json();
+//   showProduct(data);
+// }fetchProduct();
+
+// function showProduct(data: API) {
+//   document.body.innerHTML += `
+//     <div>
+//       <h2>${data.nome}</h2>
+//       <p>R$ ${data.preco}</p>
+//       <p>R$ ${data.descricao}</p>
+//       <p>R$ ${data.garantia}</p>
+//       <p>R$ ${data.seguroAcidentes}</p>
+//       <h2>Empresa Fabricante: ${data.empresaFabricante.nome}</h2>
+//       <p>R$ ${data.empresaFabricante.fundacao}</p>
+//       <p>R$ ${data.empresaFabricante.pais}</p>
+//       <h2>Empresa Montadora: ${data.empresaMontadora.nome}</h2>
+//       <p>R$ ${data.empresaMontadora.fundacao}</p>
+//       <p>R$ ${data.empresaMontadora.pais}</p>
+//     </div>
+//   `;
+// }
+
+
+type StrNumber = string | number
 interface Empresa {
   nome: string;
   fundacao: number;
   pais: string;
 }
 
-interface API {
+interface Produto {
   nome: string;
   preco: number;
   descricao: string;
-  garantia: string;
-  seguroAcidentes: boolean;
+  garantia: StrNumber;
+  seguroAcidentes: true;
   empresaFabricante: Empresa;
   empresaMontadora: Empresa;
 }
 
 async function fetchProduct() {
   const response = await fetch('https://api.origamid.dev/json/notebook.json');
-  const data = await response.json();
+  const data: Produto = await response.json();
   showProduct(data);
-}fetchProduct();
+}
 
-function showProduct(data: API) {
-  document.body.innerHTML += `
+fetchProduct();
+
+function showProduct(data: Produto) {
+  document.body.innerHTML = `
     <div>
       <h2>${data.nome}</h2>
       <p>R$ ${data.preco}</p>
-      <p>R$ ${data.descricao}</p>
-      <p>R$ ${data.garantia}</p>
-      <p>R$ ${data.seguroAcidentes}</p>
-      <h2>Empresa Fabricante: ${data.empresaFabricante.nome}</h2>
-      <p>R$ ${data.empresaFabricante.fundacao}</p>
-      <p>R$ ${data.empresaFabricante.pais}</p>
-      <h2>Empresa Montadora: ${data.empresaMontadora.nome}</h2>
-      <p>R$ ${data.empresaMontadora.fundacao}</p>
-      <p>R$ ${data.empresaMontadora.pais}</p>
+      <div>
+        <h3>Fabricante: ${data.empresaFabricante.nome}</h3>
+      </div>
+      <div>
+        <h3>Montadora: ${data.empresaMontadora.nome}</h3>
+      </div>
     </div>
   `;
 }

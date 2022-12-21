@@ -7,19 +7,16 @@ async function fetchProduct() {
 }
 fetchProduct();
 function showProduct(data) {
-    document.body.innerHTML += `
+    document.body.innerHTML = `
     <div>
       <h2>${data.nome}</h2>
       <p>R$ ${data.preco}</p>
-      <p>R$ ${data.descricao}</p>
-      <p>R$ ${data.garantia}</p>
-      <p>R$ ${data.seguroAcidentes}</p>
-      <h2>Empresa Fabricante: ${data.empresaFabricante.nome}</h2>
-      <p>R$ ${data.empresaFabricante.fundacao}</p>
-      <p>R$ ${data.empresaFabricante.pais}</p>
-      <h2>Empresa Montadora: ${data.empresaMontadora.nome}</h2>
-      <p>R$ ${data.empresaMontadora.fundacao}</p>
-      <p>R$ ${data.empresaMontadora.pais}</p>
+      <div>
+        <h3>Fabricante: ${data.empresaFabricante.nome}</h3>
+      </div>
+      <div>
+        <h3>Montadora: ${data.empresaMontadora.nome}</h3>
+      </div>
     </div>
   `;
 }
