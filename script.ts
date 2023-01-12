@@ -205,37 +205,44 @@
 // }
 
 
-class Livro {
-    autor: string
+// class Livro {
+//     autor: string
 
-    constructor(autor: string) {
-        this.autor = autor
+//     constructor(autor: string) {
+//         this.autor = autor
+//     }
+// }
+
+// class Jogo {
+//     jogadores: number
+
+//     constructor(jogadores: number) {
+//         this.jogadores = jogadores
+//     }
+// }
+
+
+// function buscarProduto(busca: string){
+//     if(busca === "O Hobbit"){
+//         return new Livro('J.R.R.Tolkien')
+//     }
+
+//     if(busca === "Dark Souls"){
+//         return new Jogo(1)
+//     }
+
+//     return null
+// }
+
+// const produto = buscarProduto("O Hobbit")
+
+// if(produto instanceof Livro){
+//    console.log(produto?.autor)
+// }
+
+class Produto {
+    nome: string;
+    constructor(nome: string) {
+      this.nome = nome;
     }
-}
-
-class Jogo {
-    jogadores: number
-
-    constructor(jogadores: number) {
-        this.jogadores = jogadores
-    }
-}
-
-
-function buscarProduto(busca: string){
-    if(busca === "O Hobbit"){
-        return new Livro('J.R.R.Tolkien')
-    }
-
-    if(busca === "Dark Souls"){
-        return new Jogo(1)
-    }
-
-    return null
-}
-
-const produto = buscarProduto("O Hobbit")
-
-if(produto instanceof Livro){
-   console.log(produto?.autor)
-}
+  }
